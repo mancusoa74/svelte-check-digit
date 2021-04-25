@@ -1,4 +1,6 @@
 <script>
+	import { fly } from 'svelte/transition';
+
 	let cf = "";
 	let len_cf = 0;
 	let checksum = '';
@@ -30,11 +32,11 @@
 	Codice Fiscale (15 lettere): &nbsp; <input bind:value={cf} placeholder='RSSMRA80A01L219' />
 	
 	{#if len_cf == 15}
-		<button on:click={calcola_checksum}>Calcola Checksum</button> 
+		<button transition:fly="{{ x: 200, duration: 1500 }}" on:click={calcola_checksum}>Calcola Checksum</button> 
 	{/if}
 	
 	{#if checksum}
-		<p><span>La checksum del codice fiscale è: <b>{checksum}</b></span></p>
+		<p transition:fly="{{ y: 200, duration: 1500 }}"><span>La checksum del codice fiscale è: <b>{checksum}</b></span></p>
 	{/if}
 </main>
 
